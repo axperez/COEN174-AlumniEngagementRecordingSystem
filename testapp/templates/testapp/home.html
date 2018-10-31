@@ -2,14 +2,14 @@
 	{% block content %}
 		<h1>Upcoming Events</h1><br>
 		{% for event in events %}
-			
+
 		<article class="media content-section">
 		  <div class="media-body">
 		    <div class="article-metadata">
-		      <a class="mr-2" href="#">{{ event.firstname }} {{ event.lastname }}</a>
-		      <small class="text-muted">{{ event.date }}</small>
+		      <a class="mr-2" href="#">{{ event.Fname }} {{ event.Lname }}</a>
+		      <small class="text-muted">{{ event.Edate }}</small>
 		    </div>
-		    <h2><a class="article-title" href="{% url 'event-view' event.id %}">{{ event.title }}</a></h2>
+		    <h2><a class="article-title" href="{% url 'event-view' event.pk %}">{{ event.Title }}</a></h2>
 		    <p class="article-content">{{ event.location }}</p>
 		  </div>
 		</article>

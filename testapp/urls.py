@@ -1,11 +1,12 @@
 from __future__ import unicode_literals
 from django.urls import path
 from .views import (
-	PostListView, 
-	PostDetailView, 
-	PostCreateView, 
+	PostListView,
+	PostDetailView,
+	PostCreateView,
 	PostUpdateView,
-	PostDeleteView
+	PostDeleteView,
+	CheckinCreateView
 )
 from . import views
 
@@ -15,7 +16,6 @@ urlpatterns = [
 		path('event/new/', PostCreateView.as_view() , name='event-create'),
 		path('event/<int:pk>/update/', PostUpdateView.as_view() , name='event-update'),
 		path('event/<int:pk>/delete/', PostDeleteView.as_view() , name='event-delete'),
-
+		path('event/<int:pk>/checkin/', CheckinCreateView.as_view(template_name="testapp/checkin.html/") , name='event-checkin'),
 		path('about/', views.about, name='site-about'),
 ]
-
