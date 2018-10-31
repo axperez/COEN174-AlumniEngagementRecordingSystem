@@ -9,10 +9,10 @@
 		      <a class="mr-2" href="#">{{ event.firstname }} {{ event.lastname }}</a>
 		      <small class="text-muted">{{ event.date }}</small>
 		    </div>
-		    <h2><a class="article-title" href="#">{{ event.title }}</a></h2>
+		    <h2><a class="article-title" href="{% url 'event-view' event.id %}">{{ event.title }}</a></h2>
 		    <p class="article-content">{{ event.location }}</p>
 		  </div>
 		</article>
 		{% endfor %}
-		<a class="nav-item nav-link" href="{% url 'register' %}">Create Event</a>
+		<a class="nav-item nav-link" href="{% url 'event-create' %}">New Post</a>
 	{% endblock content %}
