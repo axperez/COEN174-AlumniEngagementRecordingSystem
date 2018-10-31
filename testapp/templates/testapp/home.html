@@ -1,0 +1,18 @@
+	{% extends "testapp/base.html" %}
+	{% block content %}
+		<h1>Upcoming Events</h1><br>
+		{% for event in events %}
+			
+		<article class="media content-section">
+		  <div class="media-body">
+		    <div class="article-metadata">
+		      <a class="mr-2" href="#">{{ event.firstname }} {{ event.lastname }}</a>
+		      <small class="text-muted">{{ event.date }}</small>
+		    </div>
+		    <h2><a class="article-title" href="#">{{ event.title }}</a></h2>
+		    <p class="article-content">{{ event.location }}</p>
+		  </div>
+		</article>
+		{% endfor %}
+		<a class="nav-item nav-link" href="{% url 'register' %}">Create Event</a>
+	{% endblock content %}
