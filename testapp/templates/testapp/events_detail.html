@@ -1,0 +1,27 @@
+	{% extends "testapp/base.html" %}
+	{% block content %}
+		<h1>View Event</h1><br>
+
+		<article class="media content-section">
+		  <div class="media-body">
+		    <div class="article-metadata">
+		      <a class="mr-2" href="#">{{ object.firstname }} {{ object.lastname }}</a>
+		      <small class="text-muted">{{ object.date }}</small>
+		      	{% if user.is_superuser %}
+		      		<a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'event-update' object.pk %}">Update</a>
+		      		<a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'event-delete' object.pk %}">Delete</a>
+		      {%endif%}
+		    </div>
+		    <h2 class="article-title">{{ object.Title }}</h2>
+		    <p class="article-content">Description: {{ object.Description }}</p>
+				<h5 class="article-title">Guest List</h5>
+				<ul>
+				{% for attendant in object.Eattendants.all %}
+					<li>
+			 		<p class="article-content">{{ attendant.Fname}} {{attendant.Lname}}</p>
+					</li>
+				{% endfor %}
+				</ul
+		  </div>
+		</article>
+	{% endblock content %}
