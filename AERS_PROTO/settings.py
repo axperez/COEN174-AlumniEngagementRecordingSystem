@@ -25,7 +25,7 @@ SECRET_KEY = 'vb-qryfxb4%!b!k=-1hdt4&i7ieyj*wcy%--b8q%dslqdx^lc9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['axperez.pythonanywhere.com']
 
 
 # Application definition
@@ -53,6 +53,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'AERS_PROTO.urls'
+
+STATIC_ROOT = "/home/axperez/COEN174_AERS/testapp/static"
 
 TEMPLATES = [
     {
