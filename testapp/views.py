@@ -12,7 +12,7 @@ from django.views.generic import (
 	FormView
 )
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Alumni, Events
 from .forms import AlumniForm
 
@@ -82,16 +82,20 @@ class CheckinCreateView(FormView):
 		State = form.cleaned_data['State']
 		Zipcode = form.cleaned_data['Zipcode']
 		Country = form.cleaned_data['Country']
-		#EventAttending = form.cleaned_data['EventAttending']
+		EventAttending = form.cleaned_data['EventAttending']
 
 		alumni = Alumni(Fname = Fname, Minit = Minit, Lname = Lname, DOB = DOB, Email = Email, Grad_Year = Grad_Year, Job_Title = Job_Title, Phone_Num = Phone_Num, Address = Address, City = City, State = State, Zipcode = Zipcode, Country = Country)
 		alumni.save()
 
-		#event = Events.objects.get(pk=EventAttending)
-		#event.Eattendants.add(str(Fname))
+		event = Events.objects.get(Title=EventAttending[0].Title)
+		event.Eattendants.add(alumni)
+		event.save()
 		#attends = Attends(AlumFname=Fname, EventTitle=EventAttending)
 		#attends.save()
+		#alumni.event_set.add(EventAttending[0])
 
+		#return HttpResponse(alumni.event_set.all())
+		return HttpResponseRedirect('/event/%s' % EventAttending[0])
 
 
 class AlumniVerificationCreateView(CreateView):

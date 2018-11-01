@@ -13,7 +13,15 @@
 		      {%endif%}
 		    </div>
 		    <h2 class="article-title">{{ object.Title }}</h2>
-		    <p class="article-content">{{ object.Description }}</p>
+		    <p class="article-content">Description: {{ object.Description }}</p>
+				<h5 class="article-title">Guest List</h5>
+				<ul>
+				{% for attendant in object.Eattendants.all %}
+					<li>
+			 		<p class="article-content">{{ attendant.Fname}} {{attendant.Lname}}</p>
+					</li>
+				{% endfor %}
+				</ul
 		  </div>
 		</article>
 	{% endblock content %}

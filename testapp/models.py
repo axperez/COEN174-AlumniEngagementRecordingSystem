@@ -72,7 +72,7 @@ class Events(models.Model):
 	#Eattendants = models.ManyToManyField(Users, through = 'Attends', related_name='attendants')
 	#Ehosts = models.ManyToManyField(Users, through = 'Hosts', related_name='userhosts')
 	#Eattendants = models.ManyToManyField(Alumni, through = 'Attends', related_name='attendants')
-	#Eattendants = models.ManyToManyField(Alumni)
+	Eattendants = models.ManyToManyField(Alumni)
 	#Ehosts = models.ManyToManyField(Alumni, through = 'Hosts', related_name='userhosts')
 
 	def __str__(self):
