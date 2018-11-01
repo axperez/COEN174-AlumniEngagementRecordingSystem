@@ -13,7 +13,11 @@
 		      {%endif%}
 		    </div>
 		    <h2 class="article-title">{{ object.Title }}</h2>
-		    <p class="article-content">Description: {{ object.Description }}</p>
+		    <p class="article-content"><b>Description: </b>{{ object.Description }}</p>
+		    <p class="article-content"><b>Date: </b>{{ object.Edate }} from {{ object.Start_Time }} to {{ object.End_Time }}</p>
+		    <p class="article-content"><b>Address: </b>{{ object.Address }}, {{ object.City }}, {{ object.State }}</p>
+		    <p class="article-content"><b>Number of attendees: </b>{{ object.Eattendants.all.count }}</p>
+
 				<h5 class="article-title">Guest List</h5>
 				<ul>
 				{% for attendant in object.Eattendants.all %}
