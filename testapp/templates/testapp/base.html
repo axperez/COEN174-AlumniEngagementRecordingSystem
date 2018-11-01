@@ -21,10 +21,11 @@
 
 </head>
 
-<header class="site-header">
+<header id="header">
 	  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
 	    <div class="container">
-	      <a class="navbar-brand mr-4" href="{% url 'site-home' %}"">Alumni Engagement Recording System</a>
+	      <a class="navbar-brand mr-4" href="{% url 'site-home' %}"><img src="/media/images/SCU_AlumniHeader.png" width="180px" alt="SCU Crest"/></a>
+	      <a class="navbar-brand mr-4" href="{% url 'site-home' %}">Engagement Recording System</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	      </button>
@@ -59,18 +60,19 @@
 	    	{% endif %}
 	      	{% block content %}{% endblock %}
 	    </div>
-	    <div class="col-md-4">
-	      <div class="content-section">
-	        <h3>Our Sidebar</h3>
-	        <p class='text-muted'>You can put any information here you'd like.
-	          <ul class="list-group">
-	            <li class="list-group-item list-group-item-light">Latest Posts</li>
-	            <li class="list-group-item list-group-item-light">Announcements</li>
-	            <li class="list-group-item list-group-item-light">Calendars</li>
-	            <li class="list-group-item list-group-item-light">etc</li>
-	          </ul>
-	        </p>
-	      </div>
+	    <div class="col-md-4"><br><br><br><br>
+	    	{% if user.is_superuser %}
+		      <div class="content-section">
+
+		        <h3>Admin Controls</h3>
+		          <ul class="list-group">
+		            <a href="#"><li class="list-group-item list-group-item-light">Approve/Deny Request</li></a>
+		            <a href="#"><li class="list-group-item list-group-item-light">Events</li></a>
+		            <a href="#"><li class="list-group-item list-group-item-light">Reports</li></a>
+		          </ul>
+		        </p>
+		      </div>
+		    {% endif %}
 	    </div>
 	  </div>
 	</main>
