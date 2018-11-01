@@ -1,18 +1,24 @@
 	{% extends "testapp/base.html" %}
 	{% block content %}
-		<h1>Upcoming Events</h1><br>
+		<br><h1 id="black-text">Upcoming Events</h1><hr>
 		{% for event in events %}
 
 		<article class="media content-section">
-		  <div class="media-body">
+		  <div id="event-container" class="media-body">
 		    <div class="article-metadata">
-		      <a class="mr-2" href="#">{{ event.Fname }} {{ event.Lname }}</a>
 		      <small class="text-muted">{{ event.Edate }}</small>
 		    </div>
-		    <h2><a class="article-title" href="{% url 'event-view' event.pk %}">{{ event.Title }}</a></h2>
-		    <p class="article-content">{{ event.location }}</p>
+		    <h2><a id="heading-color" class="article-title" href="{% url 'event-view' event.pk %}">{{ event.Title }}</a></h2>
+		    <p id="black-text" class="article-content">{{ event.City }}, {{event.State}} {{event.Zipcode}}</p>
+	  	  </div>
+		  <div id="event-container" class="media-body">
+		  	<div class="article-metadata">
+		      <small class="text-muted">{{ event.Start_Time }} - {{ event.Start_Time }}</small>
+		    </div>
+		    <p id="black-text" class="article-content">{{ event.Description }}</p>
 		  </div>
+
 		</article>
 		{% endfor %}
-		<a class="nav-item nav-link" href="{% url 'event-create' %}">New Post</a>
+		<a class="button" class="nav-item nav-link" href="{% url 'event-create' %}">New Post</a>
 	{% endblock content %}
