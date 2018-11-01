@@ -8,11 +8,13 @@ from django.views.generic import (
 	DetailView,
 	CreateView,
 	UpdateView,
-	DeleteView
+	DeleteView,
+	FormView
 )
 
 from django.http import HttpResponse
-from .models import Users, Alumni, Events, Attends, Hosts
+from .models import Alumni, Events
+from .forms import AlumniForm
 
 # Create your views here.
 
@@ -60,10 +62,38 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 			return True
 		return False
 
-class CheckinCreateView(CreateView):
-	model = Alumni
-	fields = ['Fname', 'Minit', 'Lname', 'DOB', 'Email', 'Grad_Year', 'Job_Title', 'Phone_Num', 'Address', 'City', 'State', 'Zipcode', 'Country']
+class CheckinCreateView(FormView):
+	#model = Alumni
+	#fields = ['Fname', 'Minit', 'Lname', 'DOB', 'Email', 'Grad_Year', 'Job_Title', 'Phone_Num', 'Address', 'City', 'State', 'Zipcode', 'Country']
+	template_name = 'testapp/checkin.html'
+	form_class = AlumniForm
 
 	def form_valid(self, form):
-		form.instance.firstname = self.request.user
-		return super().form_valid(form)
+		Fname = form.cleaned_data['Fname']
+		Minit = form.cleaned_data['Minit']
+		Lname = form.cleaned_data['Lname']
+		DOB = form.cleaned_data['DOB']
+		Email = form.cleaned_data['Email']
+		Grad_Year = form.cleaned_data['Grad_Year']
+		Job_Title = form.cleaned_data['Job_Title']
+		Phone_Num = form.cleaned_data['Phone_Num']
+		Address = form.cleaned_data['Address']
+		City = form.cleaned_data['City']
+		State = form.cleaned_data['State']
+		Zipcode = form.cleaned_data['Zipcode']
+		Country = form.cleaned_data['Country']
+		#EventAttending = form.cleaned_data['EventAttending']
+
+		alumni = Alumni(Fname = Fname, Minit = Minit, Lname = Lname, DOB = DOB, Email = Email, Grad_Year = Grad_Year, Job_Title = Job_Title, Phone_Num = Phone_Num, Address = Address, City = City, State = State, Zipcode = Zipcode, Country = Country)
+		alumni.save()
+
+		#event = Events.objects.get(pk=EventAttending)
+		#event.Eattendants.add(str(Fname))
+		#attends = Attends(AlumFname=Fname, EventTitle=EventAttending)
+		#attends.save()
+
+
+
+class AlumniVerificationCreateView(CreateView):
+	model = Alumni
+	fields = ['Fname', 'Minit', 'Lname', 'DOB', 'Email', 'Grad_Year', 'Job_Title', 'Phone_Num', 'Address', 'City', 'State', 'Zipcode', 'Country']
