@@ -1,0 +1,124 @@
+	{% extends "testapp/base.html" %}
+	{% block content %}
+		<br><h1 id="black-text">View Event</h1><br>
+
+		<article class="media content-section">
+		  <div class="media-body">
+		    <div class="article-metadata">
+				<a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'event-rsvp' object.pk %}">RSVP</a>
+				<a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'conf-code' object.pk %}">Confirmation Code</a>
+				{% if user.is_superuser %}
+				<br>
+				<a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'event-update' object.pk %}">Edit</a>
+				<form style='display: inline;' action="/event/{{object.pk}}/" method="POST">
+					{% csrf_token %}
+					<td><button type="button submit" class="btn btn-secondary btn-sm mt-1 mb-1">Accept</button></td>
+					<input type="hidden" value="{{ object.pk }}" name="eventname">
+					<input type="hidden" value="Accepted" name="status">
+				</form>
+				<form style='display: inline;' action="/event/{{object.pk}}/" method="POST">
+					{% csrf_token %}
+					<td><button type="button submit" class="btn btn-secondary btn-sm mt-1 mb-1">Deny</button></td>
+					<input type="hidden" value="{{ object.pk }}" name="eventname">
+					<input type="hidden" value="Denied" name="status">
+				</form>
+				<form style='display: inline;' action="/event/{{object.pk}}/" method="POST">
+					{% csrf_token %}
+					<td><button type="button submit" class="btn btn-danger btn-sm mt-1 mb-1">Past</button></td>
+					<input type="hidden" value="{{ object.pk }}" name="eventname">
+					<input type="hidden" value="Past" name="status">
+				</form>
+				{%endif%}
+		    </div>
+		    <h1 class="article-title" id="black-text">{{ object.Title }}</h1>
+				{% if user.is_superuser %}
+					<p class="article-content" id="black-text"><b>Status: </b>{{ object.Request_Status }}</p><hr>
+					<p class="article-content" id="black-text"><b>Confirmation Code: </b>{{ object.ConfCode }}</p><hr>
+				{%endif%}
+				<p class="article-content" id="black-text"><b>Description:<br> </b>{{ object.Description }}</p><hr>
+			 	<p class="article-content" id="black-text"><b>Date: </b>{{ object.Edate }} from {{ object.Start_Time }} to {{ object.End_Time }}</p><hr>
+			 	<p class="article-content" id="black-text"><b>Address: </b>{{ object.Address }}, {{ object.City }}, {{ object.State }} {{ object.Zipcode }}</p><hr>
+				{% for host in object.Ehosts.all %}
+					<p class="article-content" id="black-text"><b>Event Host: </b><a href="/admin/testapp/alumni/{{ host.Name }}/change/">{{ host.Name }}</a></p>
+					{% if user.is_superuser %}
+					<table id="host-list">
+						<tr>
+							<th>Grad Year</th>
+							<th>DOB</th>
+							<th>Email</th>
+							<th>Alumni Status</th>
+						</tr>
+						<tr>
+				 			<td>
+				 				<p class="article-content">{{ host.Grad_Year }}</p>
+				 			</td>
+				 			<td>
+				 				<p class="article-content">{{ host.DOB }}</p>
+				 			</td>
+				 			<td>
+				 				<p class="article-content">{{ host.Email }}</p>
+				 			</td>
+				 			<td>
+					 			<p class="article-content">{{ host.Verified }}</p>
+							</td>
+						</tr>
+					</table><br><hr>
+					{% endif %}
+				{% endfor %}
+					<p class="article-content" id="black-text"><b>Number of RSVP's: </b>{{ object.Ersvp.all.count }}</p>
+					<h5 class="article-title" id="black-text">RSVP List</h5>
+					<table id="attendance-list" id="black-text">
+						<tr>
+							<th>Name</th>
+							<th>Grad Year</th>
+							<th>Alumni Status</th>
+						</tr>
+						{% for rsvp in object.Ersvp.all %}
+							<tr>
+					 			<td>
+					 				<p class="article-content"><a href="/admin/testapp/alumni/{{ rsvp.Name }}/change/">{{ rsvp.Name}}</a></p>
+					 			</td>
+					 			<td>
+					 				<p class="article-content">{{ rsvp.Grad_Year}}</p>
+					 			</td>
+					 			<td>
+						 			<p class="article-content">{{ rsvp.Verified}}</p>
+								</td>
+							</tr>
+						{% endfor %}
+					</table>
+				{% if user.is_superuser %}<br><hr>
+					<p class="article-content" id="black-text"><b>Number of attendees: </b>{{ object.Eattendants.all.count }}</p>
+					<h5 class="article-title" id="black-text">Attendant List</h5>
+					<table id="attendance-list" id="black-text">
+						<tr>
+							<th>Name</th>
+							<th>Grad Year</th>
+							<th>DOB</th>
+							<th>Email</th>
+							<th>Alumni Status</th>
+						</tr>
+						{% for attendant in object.Eattendants.all %}
+							<tr>
+								<td>
+						 			<p class="article-content"><a href="/admin/testapp/alumni/{{ attendant.Name }}/change/">{{ attendant.Name}}</a></p>
+								</td>
+								<td>
+						 			<p class="article-content">{{ attendant.Grad_Year}}</p>
+								</td>
+								<td>
+						 			<p class="article-content">{{ attendant.DOB}}</p>
+								</td>
+								<td>
+						 			<p class="article-content">{{ attendant.Email}}</p>
+								</td>
+								<td>
+						 			<p class="article-content">{{ attendant.Verified}}</p>
+								</td>
+							</tr>
+						{% endfor %}
+					</table><br>
+				{%endif%}
+		  </div>
+		</article>
+	{% endblock content %}

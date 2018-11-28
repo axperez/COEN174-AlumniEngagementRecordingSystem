@@ -1,0 +1,26 @@
+{% extends "testapp/base.html" %}
+{% block content %}
+	{% if user.is_superuser %}
+		<br><h1 id="black-text">Past Events/Reports</h1><hr>
+		{% for event in events %}
+			{% if event.Request_Status == 'Past' or event.Request_Status == 'Denied' %}
+				<article class="media content-section">
+				  <div id="event-container" class="media-body">
+				    <div class="article-metadata">
+				      <small class="text-muted">{{ event.Edate }}</small>
+				    </div>
+				    <h2><a id="heading-color" class="article-title" href="/event/{{event.pk}}/">{{ event.Title }}</a></h2>
+				    <p id="black-text" class="article-content">{{ event.City }}, {{event.State}} {{event.Zipcode}}</p>
+				    <p id="black-text" class="article-content" style="color: red;">{{ event.Request_Status }}</p>
+			  	  </div>
+				  <div id="event-container" class="media-body">
+				  	<div class="article-metadata">
+				      <small class="text-muted">{{ event.Start_Time }} - {{ event.End_Time }}</small>
+				    </div>
+				    <p id="black-text" class="article-content">{{ event.Description }}</p>
+				  </div>
+				</article>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+{% endblock content %}

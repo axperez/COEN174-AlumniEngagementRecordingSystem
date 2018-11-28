@@ -1,0 +1,36 @@
+{% extends "testapp/base.html" %}
+{% block content %}
+	{% if user.is_superuser %}
+		<br><h1 id="black-text">View Alumni</h1><hr>
+		<table id="attendance-list" id="black-text">
+				<tr>
+					<th>Name</th>
+					<th>Grad Year</th>
+					<th>DOB</th>
+					<th>Email</th>
+					<th>Alumni Status</th>
+				</tr>
+				{% for alum in alumni %}
+					{% if alum.Verified == 'Accepted' %}
+					<tr>
+						<td>
+				 			<p class="article-content"><a href="/admin/testapp/alumni/{{ alum.Name }}/change/">{{ alum.Name}}</a></p>
+						</td>
+						<td>
+				 			<p class="article-content">{{ alum.Grad_Year}}</p>
+						</td>
+						<td>
+				 			<p class="article-content">{{ alum.DOB}}</p>
+						</td>
+						<td>
+				 			<p class="article-content">{{ alum.Email}}</p>
+						</td>
+						<td>
+				 			<p class="article-content">{{ alum.Verified}}</p>
+						</td>
+					</tr>
+					{% endif %}
+				{% endfor %}
+			</table>		
+	{% endif %}
+	{% endblock content %}

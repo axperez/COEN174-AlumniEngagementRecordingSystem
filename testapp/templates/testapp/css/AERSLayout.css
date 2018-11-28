@@ -1,0 +1,80 @@
+html {
+	width: 100%;
+}
+
+.center {
+	text-align: center;
+}
+
+header {
+	width: 100%;
+	background-color: #792539;
+}
+
+nav {
+	background-color: white;
+}
+
+.col-1 {
+	display: inline-block;
+	width: 20%;
+}
+
+.col-2 {
+	display: inline-block;
+	width: 50%;
+}
+
+#col-container {
+	margin-left: 13%;
+}
+
+li {
+    display:inline;
+    font-size: 20px;
+}
+
+a.navlink {
+	text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+a.navlink:hover{
+    color: #792539;
+}
+
+ul {
+    list-style-type: none;
+    margin-left: 13%;
+    padding: 0;
+    overflow: hidden;
+    line-height: 2;
+}
+
+h1 {
+	color: white;
+	margin-left: 13%;
+	font-family: "Trade Gothic Next W01",-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+body {
+	background-color: white;
+}
+
+#calendar {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+iframe {
+	margin: auto;
+	display: block;
+}
+

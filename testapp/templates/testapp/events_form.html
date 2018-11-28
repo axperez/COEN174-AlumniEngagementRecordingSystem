@@ -1,0 +1,16 @@
+{% extends "testapp/base.html" %}
+{% load crispy_forms_tags %}
+	{% block content %}
+		<div class="content-section">
+			<form method="POST">
+				{% csrf_token %}
+				<fieldset id="black-text" class="form-group">
+					<legend id="black-text" class="border-bottom mb-4">Event Information</legend>
+					{{ form|crispy }}
+				</fieldset>
+				<div class="form-group">
+					<button id="button" class="nav-item nav-link" type="submit">Post</button>
+				</div>
+			</form>
+		</div>
+	{% endblock content %}
