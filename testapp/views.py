@@ -1,3 +1,9 @@
+'''Alumni Engagement Recording System | Developers: Axel Perez, Brendan Watamura, & Matt Wong -->
+views.py
+This file handles how a python function can take a web request and return a web response. We specify which model a certain view will need to use,
+any context or form information that we would like to add, and any displays that we want to render or return.
+'''
+
 from __future__ import unicode_literals
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin

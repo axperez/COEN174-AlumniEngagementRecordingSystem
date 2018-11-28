@@ -1,3 +1,9 @@
+'''Alumni Engagement Recording System | Developers: Axel Perez, Brendan Watamura, & Matt Wong -->
+forms.py
+This file contains the forms that we created for use throughout our website. Some forms we used Django templates to create
+however these are our custom forms.
+'''
+
 from django import forms
 from django.contrib.auth.forms import User
 from django.contrib.auth.forms import UserCreationForm

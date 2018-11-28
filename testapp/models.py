@@ -1,3 +1,10 @@
+'''Alumni Engagement Recording System | Developers: Axel Perez, Brendan Watamura, & Matt Wong -->
+models.py
+This file contains the models that define the databases entities. Each model contains attributes that link the database and python classes together.
+The Alumni model contains the attributes collected on hosts and attendees. The Events model contains attributes pertaining to event details, which
+is pertinent to a full reporting system.
+'''
+
 from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone

@@ -1,3 +1,8 @@
+'''Alumni Engagement Recording System | Developers: Axel Perez, Brendan Watamura, & Matt Wong -->
+urls.py
+This file handles our url paths.
+'''
+
 from __future__ import unicode_literals
 from django.urls import path
 from .views import (
