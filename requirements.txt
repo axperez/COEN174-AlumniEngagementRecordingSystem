@@ -2,3 +2,4 @@ django
 Pillow
 django-crispy-forms
 python-secrets
+qrcode
