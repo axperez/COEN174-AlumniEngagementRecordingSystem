@@ -10,4 +10,4 @@ http://axperez.pythonanywhere.com
 3. Git clone: git clone https://github.com/axperez/COEN174-AERS.git
 4. In the COEN174-AERS directory, pip install the requirements.txt file (pip3 install -r requirements.txt)
 5. Within COEN174-AERS, inside terminal, run 'python3 manage.py makemigrations'. Then run
-'python manage.py migrate'. Then run 'python manage.py createsuperuser'. Fill out required fields. Finally, run 'python3 manage.py runserver'.
+'python manage.py migrate'. Then run 'python manage.py createsuperuser'. Fill out required fields. Finally, run 'python3 manage.py runserver'. NOTE: When creating a superuser for the first time you will be met with an error in creation. Follow the file path and delete ONLY the parameters in the respective code line. This will allow for superuser creation.
