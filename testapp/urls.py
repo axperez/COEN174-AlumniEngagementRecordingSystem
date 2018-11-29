@@ -1,5 +1,8 @@
-'''Alumni Engagement Recording System | Developers: Axel Perez, Brendan Watamura, & Matt Wong -->
+'''
+Alumni Engagement Recording System | Developers: Axel Perez, Brendan Watamura, & Matt Wong
+
 urls.py
+
 This file handles our url paths.
 '''
 

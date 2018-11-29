@@ -1,5 +1,8 @@
-'''Alumni Engagement Recording System | Developers: Axel Perez, Brendan Watamura, & Matt Wong -->
+'''
+Alumni Engagement Recording System | Developers: Axel Perez, Brendan Watamura, & Matt Wong
+
 models.py
+
 This file contains the models that define the databases entities. Each model contains attributes that link the database and python classes together.
 The Alumni model contains the attributes collected on hosts and attendees. The Events model contains attributes pertaining to event details, which
 is pertinent to a full reporting system.
@@ -13,6 +16,9 @@ from django.urls import reverse
 
 
 class Alumni(models.Model):
+	'''
+	Alumni entity with its specific atrributes.
+	'''
 	Name = models.CharField(max_length=40, primary_key=True)
 	DOB = models.DateField()
 	Email = models.EmailField(unique=True)
@@ -36,6 +42,9 @@ class Alumni(models.Model):
 		verbose_name_plural = 'alumni'
 
 class Events(models.Model):
+	'''
+	Events entity with its specific atrributes.
+	'''
 	EID = models.AutoField(primary_key=True)
 	Title = models.CharField(max_length=20)
 	Description = models.TextField()
@@ -55,6 +64,7 @@ class Events(models.Model):
         (u'Past', u'Past'),
     )
 	Request_Status = models.CharField(max_length=8, choices=STATUSES, default = 'Pending')
+	#Many to many relationship between Alumni and Events: Attendants, RSVP, and Hosts
 	Eattendants = models.ManyToManyField(Alumni, related_name='attendants_list', blank=True)
 	Ersvp = models.ManyToManyField(Alumni, related_name='rsvp_list', blank=True)
 	Ehosts = models.ManyToManyField(Alumni, related_name='userhosts', blank = True)

@@ -1,3 +1,10 @@
+'''
+Alumni Engagement Recording System | Developers: Axel Perez, Brendan Watamura, & Matt Wong
+
+helper.py
+
+Helper functions to be able to send emails, create qr codes, and generate confirmation codes.
+'''
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -9,6 +16,9 @@ import qrcode
 import os
 
 def create_qrcode(link):
+    '''
+    Create qrcode from a given link.
+    '''
     qr = qrcode.QRCode(
     version = 1,
     error_correction = qrcode.constants.ERROR_CORRECT_H,
@@ -27,6 +37,10 @@ def create_qrcode(link):
     img.save("image.jpg")
 
 def sendmail(name, toaddr, status, confcode=None, link=None):
+    '''
+    Send an email from coen174aers@gmail.com to specific alumni with necessary
+    elements.
+    '''
     fromaddr = 'coen174aers@gmail.com'
     gmail_password = 'COEN174AERSTEST'
     # instance of MIMEMultipart
@@ -92,11 +106,17 @@ def sendmail(name, toaddr, status, confcode=None, link=None):
     return True
 
 def generate_code():
+    '''
+    Generate secure 20 character code from secrets python library.
+    '''
     alphabet = string.ascii_letters + string.digits
     confcode = ''.join(secrets.choice(alphabet) for i in range(20))
     return confcode
 
 def unique_conf_code(events):
+    '''
+    Check if code is unique against the already listed event conf codes.
+    '''
     confcode = generate_code()
     for event in events:
         if confcode == event.ConfCode:
