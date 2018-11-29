@@ -7,9 +7,7 @@ http://axperez.pythonanywhere.com
 # Installation Guide
 1. Set-up a virtual environment with python 3.6 or greater (virtualenv --python=<path_to_python> <directory_for_virtualenv>).
 2. Git init in the location you would like to have the project.
-3. Git clone: git clone 
-3. In terminal, pip install the requirements.txt file (pip3 install -r requirements.txt)
-3. Within the project folder inside terminal. Run 'python3 manage.py makemigrations'. Then run
-'python manage.py migrate'. Then run 'python manage.py runserver'.
-4. To create a superuser, run 'python3 manage.py createsuperuser' in terminal. Follow the
-instructions to create an Admin account to gain access to admin controls.
+3. Git clone: git clone https://github.com/axperez/COEN174-AERS.git
+4. In the COEN174-AERS directory, pip install the requirements.txt file (pip3 install -r requirements.txt)
+5. Within COEN174-AERS, inside terminal, run 'python3 manage.py makemigrations'. Then run
+'python manage.py migrate'. Then run 'python manage.py createsuperuser'. Fill out required fields. Finally, run 'python3 manage.py runserver'.
